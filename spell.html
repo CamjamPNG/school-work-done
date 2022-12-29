@@ -8,7 +8,7 @@
   <body>
     <h1>Spell Checker</h1>
     <h4>Spell Checker At YOUR Level</h4>   
-    <h4>Pick how nany errors your text has!</h4>   
+    <h4>Pick how many errors your text has!</h4>   
 <div style="text-align:center;"><a href="https://camjampng.github.io/school-work-done"><button>Back Home  </button></a></div>
     <form>
 	<label for="prompt">Enter OpenAI API Key: <a href="https://beta.openai.com/account/api-keys">(Where To Get A Key?)</a></label><br>
@@ -70,7 +70,7 @@
         request.send(
           JSON.stringify({
             model: 'text-davinci-003',
-            prompt: `Fix This Text "${prompt}" to have ${language}. Then under it explain what the errors are under the main text.`,
+            prompt: `Fix This Text "${prompt}" to have ${language}. Then under it explain what the errors are under the main text using the divider "|" .`,
             max_tokens: 1024,
           })
         );
