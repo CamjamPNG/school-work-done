@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Spanish Translator </title>
+    	<link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <h1>Essay Writer</h1>
+    <h4>Essay Written At YOUR Level</h4>   
+<div style="text-align:center;"><a href="https://camjampng.github.io/school-work-done"><button>Back Home  </button></a></div>
+    <form>
+
+      <label for="prompt">Enter What It Is About: </label><br>
+      <input type="text" id="prompt" name="prompt"><br>
+     <label for="language">Select Level:</label><br>
+     
+<select id="language" style="width: 150px; font-size: 14px; font-family: 'Pretendard'; padding: 6px 5px; border-radius: 10px; border: 1px solid #ccc;">
+<option value="7th Grade">7th Grade</option>
+<option value="8th Grade">8th Grade</option>
+<option value="9th Grade">9th Grade</option>
+<option value="10th Grade">10th Grade</option>
+<option value="11th Grade">11th Grade</option>
+<option value="12th Grade">12th Grade</option>
+<option value="English Major">English Major</option>
+</select> <br>
+<label for="prompt">How Many Words: </label><br>
+      <input type="text" id="words" name="words"><br>
+
+      <br>
+      <br>
+      <button type="button" onclick="generateText()">
+        Generate
+      </button>
+    </form>
+
+    <h6> Essay: </h6>
+    <div id="output"></div>
+    <script>
+
+      // Function to generate text from a given prompt
+      function generateText() {
+      
+     
+      
+        // Get prompt from form
+        const prompt = document.getElementById('prompt').value;
+        const language = document.getElementById('language').value;
+        const words = document.getElementById('words').value;
+        const API_KEY = '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';
+
+        // Create request to OpenAI GPT-3 API
+        const request = new XMLHttpRequest();
+        request.open('POST', 'https://api.openai.com/v1/completions');
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.setRequestHeader('Authorization', `Bearer ${API_KEY}`);
+
+        // Handle response from OpenAI GPT-3 API
+        request.onload = () => {
+          const response = JSON.parse(request.responseText);
+          document.getElementById('output').innerHTML = response.choices[0].text;
+        };
+
+
+        // Send request to OpenAI GPT-3 API
+        request.send(
+          JSON.stringify({
+            model: 'text-davinci-003',
+            prompt: `Write an essay about ${prompt} that is at a ${language} level using ${words} or more.`,
+            max_tokens: 1024,
+          })
+        );
+      }
+      </script>
+         <script>
+//Function to copy text from output
+function copyText() {
+  const outputText = document.getElementById('output').innerHTML;
+  navigator.clipboard.writeText(outputText);
+}
+ </script>
+ 
+ <button onclick="copyText()">
+   Copy
+ </button>
+    <footer>
+      <p>Created by <a href="https://twitter.com/camjampng">Camden V</a> | Source code available at <a href="https://github.com/CamjamPNG/school-work-done">Github</a></p>
+    </footer>
+  </body>
+</html>
