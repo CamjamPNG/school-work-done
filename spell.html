@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Spell Checker </title>
+    	<link rel="stylesheet" type="text/css" href="style.css">
+	  <link rel="icon" type="image/x-icon" href="https://www.bing.com/th?id=OIP.q2Fx_uVv4ODvO7HFvj__RwHaHa&w=249&h=250&c=8&rs=1&qlt=30&o=6&pid=3.1&rm=2">
+  </head>
+  <body>
+    <h1>Spell Checker</h1>
+    <h4>Spell Checker At YOUR Level</h4>   
+    <h4>Pick how nany errors your text has!</h4>   
+<div style="text-align:center;"><a href="https://camjampng.github.io/school-work-done"><button>Back Home  </button></a></div>
+    <form>
+	<label for="prompt">Enter OpenAI API Key: <a href="https://beta.openai.com/account/api-keys">(Where To Get A Key?)</a></label><br>
+      <input type="text" id="API_KEY" name="API_KEY"><br>
+      <label for="prompt">Text: </label><br>
+      <input type="text" id="prompt" name="prompt"><br>
+      <br>
+      <label for="language">Select Level:</label><br>
+     
+<select id="language" style="width: 150px; font-size: 14px; font-family: 'Pretendard'; padding: 6px 5px; border-radius: 10px; border: 1px solid #ccc;">
+<option value="0 Errors">0 Errors</option>
+<option value="1 Error">1 Error</option>
+<option value="2 Errors">2 Errors</option>
+<option value="3 Errors">3 Errors</option>
+<option value="4 Errors">4 Errors</option>
+<option value="5 Errors">5 Errors</option>
+<option value="6 Errors">6 Errors</option>
+<option value="7 Errors">7 Errors</option>
+<option value="8 Errors">8 Errors</option>
+<option value="9 Errors">9 Errors</option>
+<option value="10 Errors">10 Errors</option>
+</select>
+
+      <br>
+      <br>
+      <button type="button" onclick="generateText()">
+        Generate
+      </button>
+    </form>
+
+    <h6> Fixed: </h6>
+    <div id="output"></div>
+    <script>
+
+      // Function to generate text from a given prompt
+      function generateText() {
+      
+     
+      
+        // Get prompt from form
+        const prompt = document.getElementById('prompt').value;
+        const language = document.getElementById('language').value;
+        const API_KEY = document.getElementById('API_KEY').value;;
+
+        // Create request to OpenAI GPT-3 API
+        const request = new XMLHttpRequest();
+        request.open('POST', 'https://api.openai.com/v1/completions');
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.setRequestHeader('Authorization', `Bearer ${API_KEY}`);
+
+        // Handle response from OpenAI GPT-3 API
+        request.onload = () => {
+          const response = JSON.parse(request.responseText);
+          document.getElementById('output').innerHTML = response.choices[0].text;
+        };
+
+
+        // Send request to OpenAI GPT-3 API
+        request.send(
+          JSON.stringify({
+            model: 'text-davinci-003',
+            prompt: `Fix This Text "${prompt}" to have ${language}. Then under it explain what the errors are under the main text.`,
+            max_tokens: 1024,
+          })
+        );
+      }
+      </script>
+
+    <footer>
+      <p>Created by <a href="https://twitter.com/camjampng">Camden V</a> | Source code available at <a href="https://github.com/CamjamPNG/school-work-done">Github</a></p>
+    </footer>
+  </body>
+</html>
