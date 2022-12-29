@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> Essay Writer </title>
+    <title> Spanish Translator </title>
     	<link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
@@ -9,10 +9,14 @@
     <h4>Essay Written At YOUR Level</h4>   
 <div style="text-align:center;"><a href="https://camjampng.github.io/school-work-done"><button>Back Home  </button></a></div>
     <form>
-
+	<label for="prompt">Enter OpenAI API Key: <a href="https://beta.openai.com/account/api-keys">(Where To Get A Key?)</a></label><br>
+      <input type="text" id="API_KEY" name="API_KEY"><br>
       <label for="prompt">Enter What It Is About: </label><br>
       <input type="text" id="prompt" name="prompt"><br>
-     <label for="language">Select Level:</label><br>
+      <br>
+<label for="prompt">How Many Words: </label><br>
+      <input type="text" id="words" name="words"><br>
+      <label for="language">Select Level:</label><br>
      
 <select id="language" style="width: 150px; font-size: 14px; font-family: 'Pretendard'; padding: 6px 5px; border-radius: 10px; border: 1px solid #ccc;">
 <option value="7th Grade">7th Grade</option>
@@ -22,9 +26,7 @@
 <option value="11th Grade">11th Grade</option>
 <option value="12th Grade">12th Grade</option>
 <option value="English Major">English Major</option>
-</select> <br>
-<label for="prompt">How Many Words: </label><br>
-      <input type="text" id="words" name="words"><br>
+</select>
 
       <br>
       <br>
@@ -46,7 +48,7 @@
         const prompt = document.getElementById('prompt').value;
         const language = document.getElementById('language').value;
         const words = document.getElementById('words').value;
-        const API_KEY = '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';
+        const API_KEY = document.getElementById('API_KEY').value;;
 
         // Create request to OpenAI GPT-3 API
         const request = new XMLHttpRequest();
@@ -65,8 +67,8 @@
         request.send(
           JSON.stringify({
             model: 'text-davinci-003',
-            prompt: `Write an essay about ${prompt} that is at a ${language} level using ${words} words`,
-            max_tokens: 512,
+            prompt: `Write an essay about ${prompt} that is at a ${language} level using ${words} words.`,
+            max_tokens: 2048,
           })
         );
       }
