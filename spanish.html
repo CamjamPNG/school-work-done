@@ -7,9 +7,10 @@
   <body>
     <h1>Spanish Translator</h1>
     <h4>Translator At YOUR Level</h4>   
-<div style="text-align:center;"><a href="https://camjampng.github.io/school-work-done"><button>Back Home</button></a></div>
+<div style="text-align:center;"><a href="https://camjampng.github.io/school-work-done"><button>Back Home  </button></a></div>
     <form>
-
+	<label for="prompt">Enter OpenAI API Key: <a href="https://beta.openai.com/account/api-keys">(Where To Get A Key?)</a></label><br>
+    <input type="text" id="API_KEY" name="API_KEY"><br>
       <label for="prompt">Enter English Text:</label><br>
       <input type="text" id="prompt" name="prompt"><br>
      <label for="language">Select Level:</label><br>
@@ -42,7 +43,7 @@
         // Get prompt from form
         const prompt = document.getElementById('prompt').value;
         const language = document.getElementById('language').value;
-        const API_KEY = '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';
+        const API_KEY = document.getElementById('API_KEY').value;
 
         // Create request to OpenAI GPT-3 API
         const request = new XMLHttpRequest();
