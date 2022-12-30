@@ -54,7 +54,7 @@
         request.send(
           JSON.stringify({
             model: 'text-davinci-003',
-            prompt: `${homework_question} And Use Pemdas If Is Math and show work and prove it`,
+            prompt: `${homework_question} And Use Pemdas If Is Math, show proof and fact-check it`,
             max_tokens: 512,
           })
         );
