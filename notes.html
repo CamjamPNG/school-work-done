@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AI-Powered Note Taking System</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://www.bing.com/th?id=OIP.q2Fx_uVv4ODvO7HFvj__RwHaHa&w=249&h=250&c=8&rs=1&qlt=30&o=6&pid=3.1&rm=2"
+    >
+  </head>
+  <body>
+    <h1>AI-Powered Note Taking System</h1>
+    <h4>Generate Cornell Note System Format from Lesson/Paragraph! </H4>
+    <div style="text-align:center;">
+      <a href="https://camjampng.github.io/school-work-done">
+        <button>Back Home  </button>
+      </a>
+    </div>
+    <form>
+      <label for="openai_key">Enter OpenAI API Key: <a href="https://beta.openai.com/account/api-keys">(Where To Get A Key?)</a></label>
+      <br>
+      <input type="text" id="openai_key" name="openai_key">
+      <br>
+      <br>
+      <label for="notes">Enter Notes:</label>
+      <br>
+      <textarea id="notes" name="notes"></textarea>
+      <br>
+      <br>
+      <button type="button" onclick="generateStudyGuide()">
+        Generate
+      </button>
+    </form>
+
+    <h6> Output: </h6>
+    <div id="output"></div>
+    <script>
+      // Function to generate study guide from given inputs
+      function generateStudyGuide() {
+        // Get inputs from form
+        const openai_key = document.getElementById('openai_key').value;
+        const notes = document.getElementById('notes').value;
+
+        // Create request to OpenAI GPT-3 API
+        const request = new XMLHttpRequest();
+        request.open('POST', 'https://api.openai.com/v1/completions');
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.setRequestHeader('Authorization', `Bearer ${openai_key}`);
+
+        // Handle response from OpenAI GPT-3 API
+        request.onload = () => {
+          const response = JSON.parse(request.responseText);
+          document.getElementById('output').innerHTML = response.choices[0].text;
+        };
+
+        // Send request to OpenAI GPT-3 API
+        request.send(
+          JSON.stringify({
+            model: 'text-davinci-003',
+            prompt: `Take "${notes}" and put it in the Cornell note system format.`,
+            max_tokens: 256
+          })
+        );
+      }
+       </script>
+         <script>
+//Function to copy text from output
+function copyText() {
+  const outputText = document.getElementById('output').innerHTML;
+  navigator.clipboard.writeText(outputText);
+}
+ </script>
+ 
+ <button onclick="copyText()">
+   Copy
+ </button>
+ 
+  </body>
+</html>
