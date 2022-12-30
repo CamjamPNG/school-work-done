@@ -1,22 +1,32 @@
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>Math Word Problem Solver!</title>
-    	<link rel="stylesheet" type="text/css" href="style.css">
-<link rel="icon" type="image/x-icon" href="https://www.bing.com/th?id=OIP.q2Fx_uVv4ODvO7HFvj__RwHaHa&w=249&h=250&c=8&rs=1&qlt=30&o=6&pid=3.1&rm=2">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/x-icon" href="https://www.bing.com/th?id=OIP.q2Fx_uVv4ODvO7HFvj__RwHaHa&w=249&h=250&c=8&rs=1&qlt=30&o=6&pid=3.1&rm=2">
   </head>
   <body>
     <h1>Math Word Problem Solver!</h1>
-    <h4>Welcome to the Math Word Problem Solver! Get your homework done in just a few clicks (we do word problems
-    :3.)</h4>   
-<div style="text-align:center;"><a href="https://camjampng.github.io/school-work-done"><button>Back Home  </button></a></div>
+    <h4>Welcome to the Math Word Problem Solver! Get your homework done in just a few clicks (BETA, IT WILL BE WRONG ON ANYTHING NOT SIMPLE 99% OF THE TIME)</h4>
+    <div style="text-align:center;"><a href="https://camjampng.github.io/school-work-done"><button>Back Home</button></a></div>
     <form>
-	<label for="openai_key">Enter OpenAI API Key: <a href="https://beta.openai.com/account/api-keys">(Where To Get A Key?)</a></label><br>
-    <input type="text" id="openai_key" name="openai_key"><br>
+      <label for="openai_key">Enter OpenAI API Key: <a href="https://beta.openai.com/account/api-keys">(Where To Get A Key?)</a></label><br>
+      <input type="text" id="openai_key" name="openai_key"><br>
       <br>
       <label for="homework">Enter Your Homework Question:</label><br>
       <textarea id="homework" rows="4" cols="50"></textarea>
-
+      <br>
+      <br>
+      <label for="math_level">Select Your Math Level:</label><br>
+      <select id="math_level">
+      	<option value="8th grade"> 8th Grade/Pre Algebra </option>
+        <option value="algebra_1">Algebra 1</option>
+        <option value="geometry">Geometry</option>
+        <option value="algebra_2">Algebra 2</option>
+        <option value="precalculus">Precalculus</option>
+        <option value="calculus">Calculus</option>
+      </select>
       <br>
       <br>
       <button type="button" onclick="solveHomework()">
@@ -27,16 +37,13 @@
     <h6> Solution: </h6>
     <div id="output"></div>
     <script>
-
       // Function to solve homework from given input
-      function solveHomework() {
-      
-     
-      
+		      function solveHomework() {
         // Get inputs from form
         const openai_key = document.getElementById('openai_key').value;
         const homework_question = document.getElementById('homework').value;
-       
+        const math_level = document.getElementById('math_level').value;
+
         // Create request to OpenAI GPT-3 API
         const request = new XMLHttpRequest();
         request.open('POST', 'https://api.openai.com/v1/completions');
@@ -49,28 +56,30 @@
           document.getElementById('output').innerHTML = response.choices[0].text;
         };
 
-
         // Send request to OpenAI GPT-3 API
         request.send(
           JSON.stringify({
             model: 'text-davinci-003',
-            prompt: `${homework_question} And Use Pemdas If Is Math, show proof and fact-check it`,
+            prompt: `Solve the following math problem using ${math_level} level math:
+
+${homework_question}
+
+To solve this problem, use the appropriate math concepts and techniques based on the ${math_level} level math requirements. Set up an equation or system of equations to model the problem, and use algebraic techniques to solve it. Check your solution to make sure it is reasonable.
+
+Remember to show your work and explain your reasoning clearly.`,
             max_tokens: 512,
           })
         );
       }
-      </script>
-         <script>
-//Function to copy text from output
-function copyText() {
-  const outputText = document.getElementById('output').innerHTML;
-  navigator.clipboard.writeText(outputText);
-}
- </script>
- 
- <button onclick="copyText()">
-   Copy
- </button>
- 
+      
+      // Function to copy text from output
+      function copyText() {
+        const outputText = document.getElementById('output').innerHTML;
+        navigator.clipboard.writeText(outputText);
+      }
+    </script>
+    <button onclick="copyText()">
+      Copy
+    </button>
   </body>
 </html>
