@@ -58,7 +58,7 @@
         request.send(
           JSON.stringify({
             model: 'text-davinci-003',
-            prompt: `Take "${notes}" and put it in the Cornell note system format.`,
+            prompt: `Take "${notes}" and put it in the Cornell note system format with 5 parts, 1. Main Idea:, 2. Short-Notes:, 3. Long-Notes:, 4: Summary:, 5. Questions: .`,
             max_tokens: 256
           })
         );
