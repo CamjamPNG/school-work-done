@@ -86,9 +86,6 @@ button:hover {
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
 }
 
-
-
-
 /* Mobile styles */
 @media only screen and (max-width: 600px) {
   body {
@@ -124,9 +121,8 @@ button:hover {
   input {
     border-radius: 0;
   }
-
-
-button {
+  
+  button {
   border-radius: 0;
   }
   
