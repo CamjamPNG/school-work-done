@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Study Guide Generator</title>
+    	<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" type="image/x-icon" href="https://www.bing.com/th?id=OIP.q2Fx_uVv4ODvO7HFvj__RwHaHa&w=249&h=250&c=8&rs=1&qlt=30&o=6&pid=3.1&rm=2">
+  </head>
+  <body>
+    <h1>Study Guide Generator</h1>
+    <h4>Generate a Study Guide for Your Subject</h4>   
+<div style="text-align:center;"><a href="https://camjampng.github.io/school-work-done"><button>Back Home  </button></a></div>
+    <form>
+	<label for="openai_key">Enter OpenAI API Key: <a href="https://beta.openai.com/account/api-keys">(Where To Get A Key?)</a></label><br>
+    <input type="text" id="openai_key" name="openai_key"><br>
+      <label for="subject">Enter Subject:</label><br>
+      <input type="text" id="subject" name="subject"><br>
+      <label for="grade">Enter Grade:</label><br>
+      <input type="text" id="grade" name="grade"><br>
+     <label for="age_range">Select Age Range:</label><br>
+     
+<select id="age_range" style="width: 150px; font-size: 14px; font-family: 'Pretendard'; padding: 6px 5px; border-radius: 10px; border: 1px solid #ccc;">
+<option value="12-13">12-13</option>
+<option value="14-15">14-15</option>
+<option value="16-17">16-17</option>
+<option value="18">18</option>
+</select>
+
+      <br>
+      <br>
+      <label for="study_duration">Select Study Duration:</label><br>
+     
+<select id="study_duration" style="width: 150px; font-size: 14px; font-family: 'Pretendard'; padding: 6px 5px; border-radius: 10px; border: 1px solid #ccc;">
+<option value="30 minutes">30 minutes</option>
+<option value="1 hour">1 hour</option>
+<option value="2 hours">2 hours</option>
+<option value="3 hours">3 hours</option>
+</select>
+
+      <br>
+      <br>
+      <button type="button" onclick="generateStudyGuide()">
+        Generate
+      </button>
+    </form>
+
+    <h6> Study Guide: </h6>
+    <div id="output"></div>
+    <script>
+
+      // Function to generate study guide from given inputs
+      function generateStudyGuide() {
+      
+     
+      
+        // Get inputs from form
+        const openai_key = document.getElementById('openai_key').value;
+        const subject = document.getElementById('subject').value;
+                const age_range = document.getElementById('age_range').value;
+        const study_duration = document.getElementById('study_duration').value;
+         const grade = document.getElementById('grade').value;
+
+        // Create request to OpenAI GPT-3 API
+        const request = new XMLHttpRequest();
+        request.open('POST', 'https://api.openai.com/v1/completions');
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.setRequestHeader('Authorization', `Bearer ${openai_key}`);
+
+        // Handle response from OpenAI GPT-3 API
+        request.onload = () => {
+          const response = JSON.parse(request.responseText);
+          document.getElementById('output').innerHTML = response.choices[0].text;
+        };
+
+
+        // Send request to OpenAI GPT-3 API
+        request.send(
+          JSON.stringify({
+            model: 'text-davinci-003',
+            prompt: `Make a study plan for an ${subject} student who is
+ - ${age_range} years old
+ - has up to ${study_duration} to study per day
+ - A ${grade} in this class
+ - In the format of
+ " ? Minutes:
+ ? Minutes:
+? Minutes:" `,
+            max_tokens: 512,
+          })
+        );
+      }
+      </script>
+         <script>
+//Function to copy text from output
+function copyText() {
+  const outputText = document.getElementById('output').innerHTML;
+  navigator.clipboard.writeText(outputText);
+}
+ </script>
+ 
+ <button onclick="copyText()">
+   Copy
+ </button>
+ 
+  </body>
+</html>
+
