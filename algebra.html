@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Homework Solver</title>
+    	<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" type="image/x-icon" href="https://www.bing.com/th?id=OIP.q2Fx_uVv4ODvO7HFvj__RwHaHa&w=249&h=250&c=8&rs=1&qlt=30&o=6&pid=3.1&rm=2">
+  </head>
+  <body>
+    <h1>Algebra Homework Solver</h1>
+    <h4>Welcome to the Algebra Word Problem Solver! Get your homework done in just a few clicks (we do word problems
+    :3.)</h4>   
+<div style="text-align:center;"><a href="https://camjampng.github.io/homework-solver"><button>Back Home  </button></a></div>
+    <form>
+	<label for="openai_key">Enter OpenAI API Key: <a href="https://beta.openai.com/account/api-keys">(Where To Get A Key?)</a></label><br>
+    <input type="text" id="openai_key" name="openai_key"><br>
+      <br>
+      <label for="homework">Enter Your Homework Question:</label><br>
+      <textarea id="homework" rows="4" cols="50"></textarea>
+
+      <br>
+      <br>
+      <button type="button" onclick="solveHomework()">
+        Solve
+      </button>
+    </form>
+
+    <h6> Solution: </h6>
+    <div id="output"></div>
+    <script>
+
+      // Function to solve homework from given input
+      function solveHomework() {
+      
+     
+      
+        // Get inputs from form
+        const openai_key = document.getElementById('openai_key').value;
+        const homework_question = document.getElementById('homework').value;
+       
+        // Create request to OpenAI GPT-3 API
+        const request = new XMLHttpRequest();
+        request.open('POST', 'https://api.openai.com/v1/completions');
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.setRequestHeader('Authorization', `Bearer ${openai_key}`);
+
+        // Handle response from OpenAI GPT-3 API
+        request.onload = () => {
+          const response = JSON.parse(request.responseText);
+          document.getElementById('output').innerHTML = response.choices[0].text;
+        };
+
+
+        // Send request to OpenAI GPT-3 API
+        request.send(
+          JSON.stringify({
+            model: 'text-davinci-003',
+            prompt: `${homework_question} And Use Pemdas If Is Math and show work and prove it`,
+            max_tokens: 512,
+          })
+        );
+      }
+      </script>
+         <script>
+//Function to copy text from output
+function copyText() {
+  const outputText = document.getElementById('output').innerHTML;
+  navigator.clipboard.writeText(outputText);
+}
+ </script>
+ 
+ <button onclick="copyText()">
+   Copy
+ </button>
+ 
+  </body>
+</html>
