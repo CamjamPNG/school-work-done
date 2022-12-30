@@ -1,92 +1,92 @@
+body {
+  font-family: 'Pretendard';
+  font-size: 18px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #f2f2f2;
+}
 
-      body {
-        font-family: 'Pretendard';
-        font-size: 18px;
-        margin: 0 auto;
-        padding: 10px;
-        background-color: #f2f2f2;
-      }
-      
-     img {
-  		display: inline-block;
-        padding: 10px;
-		}
+img {
+  display: inline-block;
+  padding: 10px;
+}
 
-      h1 {
-        font-weight: bold;
-        font-size: 40px;
-        color: #000000;
-        text-align: center;
-      }
-      
-      h4 {
-        font-weight: bold;
-        font-size: 25px;
-        color: #616161;
-        margin-bottom: 5px;
-        text-align: center;
-      }
-      
-      h5 {
-        font-weight: bold;
-        font-size: 18px;
-        color: #000000;
-        margin-bottom: 5px;
-        text-align: center;
-      }
-      
-      h6 {
-        font-weight: bold;
-        font-size: 18px;
-        color: #000000;
-        margin-bottom: 5px;
-      }
+h1 {
+  font-weight: bold;
+  font-size: 40px;
+  color: #000000;
+  text-align: center;
+}
 
-      form {
-        background-color: #ffffff;
-        padding: 16px;
-        border-radius: 8px;
-        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
-      }
+h4 {
+  font-weight: bold;
+  font-size: 25px;
+  color: #616161;
+  margin-bottom: 5px;
+  text-align: center;
+}
 
-      label {
-        font-weight: bold;
-        font-size: 16px;
-        color: #000000;
-      }
+h5 {
+  font-weight: bold;
+  font-size: 18px;
+  color: #000000;
+  margin-bottom: 5px;
+  text-align: center;
+}
 
-      input {
-        width: 98%;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        padding: 12px;
-        border: 1px solid #cccccc;
-        border-radius: 10px;
-      }
+h6 {
+  font-weight: bold;
+  font-size: 18px;
+  color: #000000;
+  margin-bottom: 5px;
+}
 
-        button {
-        font-size: 16px;
-        font-weight: bold;
-        background-color: #000000;
-        color: #ffffff;
-        padding: 12px;
-        border: none;
-        border-radius: 10px;
-        transition: all 0.2s;
-    }
+form {
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
 
-    button:hover {
-        transform: scale(1.0375);
-    }
+label {
+  font-weight: bold;
+  font-size: 16px;
+  color: #000000;
+}
 
-      #output {
-        margin-top: 16px;
-        background-color: #ffffff;
-        padding: 16px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
-      }
+input {
+  width: 98%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 12px;
+  border: 1px solid #cccccc;
+  border-radius: 10px;
+}
 
+button {
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+
+button:hover {
+  transform: scale(1.0375);
+}
+
+#output {
+  margin-top: 16px;
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile styles */
 @media only screen and (max-width: 600px) {
   body {
     font-size: 14px;
@@ -123,7 +123,7 @@
   }
   
   button {
-    border-radius: 0;
+  border-radius: 0;
   }
   
   #output {
@@ -131,17 +131,18 @@
     box-shadow: none;
   }
   
-  /* Additional styles */
-  img {
-    width: 100%;
+  /* Form styles */
+  form label {
+    font-size: 26px;
   }
   
-  label {
-    display: block;
+  form input {
+    font-size: 22px;
   }
   
-  input[type="checkbox"] {
-    display: inline-block;
-    width: auto;
+  form button {
+    font-size: 24px;
   }
 }
+
+   
