@@ -15,8 +15,10 @@
     <input type="text" id="openai_key" name="openai_key"><br>
     <label for="topic">Enter Topic: </label><br>
     <input type="text" id="topic" name="topic"><br>
- <label for="topic">How Many Questions: </label><br>
+ <label for="number">How Many Questions: </label><br>
     <input type="text" id="number" name="number"><br>
+	    <label for="question">Enter An Example Question: </label><br>
+    <input type="text" id="question" name="question"><br>
 	<label for="language">Select Level:</label><br>
      
 <select id="language" style="width: 150px; font-size: 14px; font-family: 'Pretendard'; padding: 6px 5px; border-radius: 10px; border: 1px solid #ccc;">
@@ -48,6 +50,7 @@
         const topic = document.getElementById('topic').value;
 		const number = document.getElementById('number').value;
 		const language = document.getElementById('language').value;
+	       const question = document.getElementById('question').value;
        
         // Create request to OpenAI GPT-3 API
         const request = new XMLHttpRequest();
@@ -66,7 +69,7 @@
         request.send(
           JSON.stringify({
             model: 'text-davinci-003',
-            prompt: `Make a ${number} question multiple choice Quiz about ${topic} at a ${language} level`,
+            prompt: `Make a ${number} question multiple choice Quiz about ${topic} at a ${language} level. Make sure one of the answers are correct. A good example of a qustion is "${question}`,
             max_tokens: 512,
           })
         );
