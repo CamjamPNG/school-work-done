@@ -70,7 +70,7 @@
         request.send(
           JSON.stringify({
             model: 'text-davinci-003',
-            prompt: `Fix This Text "${prompt}" to have ${language}. Then under it explain what the errors are under the main text using the divider "|" .`,
+            prompt: `Fix This Text "${prompt}" to have ${language}. Then under it explain what the errors are under the main text using the divider "|". A good example is "Homosexality in Serbia was first criminalised from 1860 thorugh various regims, untill it had was decriminalised fist in Socialist Autonomous Province of Vojvodina in 1977.[1] When Vojvodina was reintroduced fullly into the Republic of Serbia legal system during the breakout of Yugoslavia, it was recriminalised agian, untill 1994 when it was decriminalised in the entrie Serbia.[2][3][4] | Homosexality - should be "Homosexuality"; had was - should be "it was""`,
             max_tokens: 1024,
           })
         );
