@@ -17,12 +17,12 @@
      <label for="language">Select Level:</label><br>
      
 <select id="language" style="width: 150px; font-size: 14px; font-family: 'Pretendard'; padding: 6px 5px; border-radius: 10px; border: 1px solid #ccc;">
-<option value="Very VERY Basic, short sentences, only present tense verb form">Grade 7</option>
-<option value="Very Basic, sentences, only present tense verb form">Grade 8</option>
-<option value="Semi Basic, sentences, only present and future tense verb form">Grade 9</option>
-<option value="Basic">Grade 10</option>
-<option value="Semi Advanced">Grade 11</option>
-<option value="Advanced">Grade 12</option>
+<option value="7th grade">Grade 7</option>
+<option value="8th grade">Grade 8</option>
+<option value="9th grade">Grade 9</option>
+<option value="10th grade">Grade 10</option>
+<option value="11th grade">Grade 11</option>
+<option value="12th grade">Grade 12</option>
 </select>
 
       <br>
@@ -63,7 +63,7 @@
         request.send(
           JSON.stringify({
             model: 'text-davinci-003',
-            prompt: `Put ${prompt} in spanish that at a us ${language} level.`,
+            prompt: `Put ${prompt} in Spanish at a ${language} level. For example, if the prompt is for a 7th or 8th grade student, use vocabulary and grammar appropriate for a 1st year Spanish student. If the prompt is for a 9th grade student, use vocabulary and grammar appropriate for a 2nd year Spanish student, and so on.`,
             max_tokens: 512,
           })
         );
