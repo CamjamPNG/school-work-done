@@ -69,7 +69,17 @@
         request.send(
           JSON.stringify({
             model: 'text-davinci-003',
-            prompt: `Make a ${number} question multiple choice Quiz about ${topic} at a ${language} level. Make sure one of the answers are correct. A good example of a qustion is "${question}`,
+            prompt: `Create a ${number} question multiple choice quiz about ${topic} at a ${language} level. Make sure to include one correct answer for each question. A good example of the type of question to include in the quiz is: "${question}"
+
+To create an effective quiz, consider the following guidelines:
+
+Use appropriate language and vocabulary for the ${language} level.
+Clearly state the topic and purpose of the quiz in the introduction.
+Use relevant and accurate information in the quiz questions and answers.
+Provide a range of answer options that include the correct answer and distractors that are plausible but incorrect.
+Use proper grammar and mechanics in the quiz questions and answers.
+Make sure the quiz is well-organized and easy to follow.
+Remember to proofread the quiz for errors before submitting it.`,
             max_tokens: 512,
           })
         );
