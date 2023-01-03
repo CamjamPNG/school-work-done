@@ -68,7 +68,7 @@
         request.send(
           JSON.stringify({
             model: 'text-davinci-003',
-            prompt: `Write an essay about ${prompt} that is at a ${language} level using ${words} words.`,
+            prompt: `Write an essay about ${prompt} that is at a US ${language} level, with what they have learned up untill that point and only using ${words} words.`,
             max_tokens: 2048,
           })
         );
