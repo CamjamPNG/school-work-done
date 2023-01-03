@@ -64,8 +64,8 @@
         request.send(
           JSON.stringify({
             model: 'text-davinci-003',
-            prompt: `Simplify  ${prompt} to a ${language} level.`,
-            max_tokens: 1024,
+            prompt: `Simplify the following ${prompt} to a ${language} level, to simplify the material, use appropriate language and vocabulary for the ${language} level. Avoid using complex or technical terms, and aim to explain the material in a clear and concise manner. Use examples and analogies to help make the material more understandable, and consider breaking the material down into smaller, more manageable chunks. Keep in mind the audience for the simplified material, and make sure to provide any necessary background information or context.`,
+            max_tokens: 128,
           })
         );
       }
