@@ -61,12 +61,8 @@
           JSON.stringify({
             model: 'text-davinci-003',
             prompt: `Solve the following math problem using ${math_level} level math:
-
 ${homework_question}
-
-To solve this problem, use the appropriate math concepts and techniques based on the ${math_level} level math requirements. Set up an equation or system of equations to model the problem, and use algebraic techniques to solve it. Check your solution to make sure it is reasonable.
-
-Remember to show your work and explain your reasoning clearly.`,
+To solve this problem, use the appropriate math concepts and techniques based on the ${math_level} level math requirements. Set up an equation or system of equations to model the problem, and use algebraic techniques to solve it. Check your solution to make sure it is reasonable and shows your work. Use clear and concise language to explain your reasoning and solution method.`,
             max_tokens: 512,
           })
         );
