@@ -17,8 +17,25 @@
       <br>
 <label for="prompt">How Many Words: </label><br>
       <input type="text" id="words" name="words"><br>
-      <label for="language">Select Level:</label><br>
-     
+
+<label for="prompt">What Type Of Essay: </label><br>
+	  <select id="essay_type" style="width: 150px; font-size: 14px; font-family: 'Pretendard'; padding: 6px 5px; border-radius: 10px; border: 1px solid #ccc;">
+<option value="Descriptive">Descriptive essay</option>
+<option value="Narrative">Narrative essay</option>
+<option value="Compare and contrast">Compare and contrast essay</option>
+<option value="Persuasive">Persuasive essay</option>
+<option value="Expository">Expository essay</option>
+<option value="Literary analysis">Literary analysis essay</option>
+<option value="Process analysis">Process analysis essay</option>
+<option value="Research">Research essay</option>
+<option value="Argumentative">Argumentative essay</option>
+<option value="Rhetorical analysis">Rhetorical analysis essay</option>
+<option value="Analytical">Analytical essay</option>
+<option value="Synthesis">Synthesis essay</option>
+<option value="Critical analysis">Critical analysis essay</option>
+<option value="Literary theory">Literary theory essay</option>
+</select>
+	 <label for="language">Select Level:</label><br>
 <select id="language" style="width: 150px; font-size: 14px; font-family: 'Pretendard'; padding: 6px 5px; border-radius: 10px; border: 1px solid #ccc;">
 <option value="7th Grade">7th Grade</option>
 <option value="8th Grade">8th Grade</option>
@@ -49,7 +66,8 @@
         const prompt = document.getElementById('prompt').value;
         const language = document.getElementById('language').value;
         const words = document.getElementById('words').value;
-        const API_KEY = document.getElementById('API_KEY').value;;
+		const essay_type = document.getElementById('essay_type').value;
+        const API_KEY = document.getElementById('API_KEY').value;
 
         // Create request to OpenAI GPT-3 API
         const request = new XMLHttpRequest();
@@ -68,8 +86,8 @@
         request.send(
           JSON.stringify({
             model: 'text-davinci-003',
-            prompt: `Compose an essay addressing the topic of ${prompt} that adheres to the conventions of academic writing at a United States ${language} level. Utilize your current knowledge and understanding of the subject to craft an argument, while adhering to a minunum amount of words of${words} words.`,
-            max_tokens: 2048,
+            prompt: `Compose a ${essay_type} essay addressing the topic of ${prompt} that adheres to the conventions of academic writing at a United States ${language} level. Utilize your current knowledge and understanding of the subject to craft an argument, while adhering to a minimum word count of ${words} words.`,
+            max_tokens: 1500,
           })
         );
       }
