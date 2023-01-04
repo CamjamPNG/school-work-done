@@ -68,7 +68,7 @@
         request.send(
           JSON.stringify({
             model: 'text-davinci-003',
-            prompt: `Write an essay about ${prompt} that is at a US ${language} level, with what they have learned up untill that point and only using ${words} words.`,
+            prompt: `Compose an essay addressing the topic of ${prompt} that adheres to the conventions of academic writing at a United States ${language} level. Utilize your current knowledge and understanding of the subject to craft an argument, while adhering to a minunum amount of words of${words} words.`,
             max_tokens: 2048,
           })
         );
